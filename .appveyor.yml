@@ -20,9 +20,7 @@ before_build:
   - set PATH=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin;%PATH%
   - DIR C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1
   - DIR C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
-  - DIR C:\mingw\bin
-  - mingw-w64.bat
-  
+  - DIR C:\mingw\bin  
   - mkdir build
   - cd build
   - cmake -G "%GENERATOR%" -DCMAKE_CXX_COMPILER="C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin\g++" .. 
