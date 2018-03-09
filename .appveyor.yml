@@ -1,3 +1,13 @@
+image:
+- Visual Studio 2015
+
+platform:
+- x64
+
+environment:
+  matrix:
+  - arch: Win64
+
 build:
   verbosity: detailed
 
@@ -7,8 +17,6 @@ install:
 build_script:
   - mkdir build
   - cd build
-  - cmake .. 
-  - make lab1_double_base_palindrome_tests
-  - tests/lab1test/lab1_double_base_palindrome_tests
-  - make lab2_array_2d_step1_tests
-  - tests/lab2test/lab2_array_2d_step1_tests
+  - cmake .. -G "MinGW Makefiles" -DCMAKE_CXX_COMPILER="C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1"
+  - mingw64-make lab1_double_base_palindrome_tests
+  - tests/lab1test/lab1_double_base_palindrome_tests 
