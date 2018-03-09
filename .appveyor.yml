@@ -5,9 +5,7 @@ platform:
 
 environment:
   matrix:
-  - arch: Win64
   - GENERATOR: MinGW Makefiles
-  - GENERATOR: Visual Studio 14 2015
 
 
 build:
@@ -18,12 +16,12 @@ install:
 
 before_build:
   # Workaround for CMake not wanting sh.exe on PATH for MinGW
-  - set PATH=%PATH:C:\Program Files (x86)\Git\bin;=%
-  - set PATH=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\bin;%PATH%
+  - ECHO %PATH%
+  - set PATH=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1
   - mkdir build
   - cd build
   - cmake -G "%GENERATOR%" ..
 
 build_script:
-  - mingw64-make lab1_double_base_palindrome_tests
+  - mingw32-make lab1_double_base_palindrome_tests
   - tests/lab1test/lab1_double_base_palindrome_tests 
