@@ -12,6 +12,3 @@ build_script:
   - tests/lab1test/lab1_double_base_palindrome_tests
   - make lab2_array_2d_step1_tests
   - tests/lab2test/lab2_array_2d_step1_tests
-
-notifications:
-  email: false
