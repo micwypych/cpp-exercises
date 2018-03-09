@@ -1,7 +1,4 @@
-environment:
-  matrix:
-  - GENERATOR: MinGW Makefiles
-  - GENERATOR: Visual Studio 14 2015
+version: '{build}'
 
 platform:
 - x64
@@ -9,6 +6,9 @@ platform:
 environment:
   matrix:
   - arch: Win64
+  - GENERATOR: MinGW Makefiles
+  - GENERATOR: Visual Studio 14 2015
+
 
 build:
   verbosity: detailed
