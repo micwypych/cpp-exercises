@@ -1,5 +1,7 @@
 ### C++ programming classes problmes ###
 
+[![Build Status](https://travis-ci.org/micwypych/cpp-exercises.svg?branch=master)](https://travis-ci.org/micwypych/cpp-exercises)
+
 #### CLion CMakeLists.txt template ####
 
 In order to create new solution faster one can define template file 
