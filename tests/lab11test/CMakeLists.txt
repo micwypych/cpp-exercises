@@ -15,4 +15,4 @@ add_executable(lab11_all_tests ${SOURCE_FILES})
 
 target_link_libraries(lab11_all_tests ${GTEST_LIBS})
 target_link_libraries(lab11_all_tests libfactorymethod)
-target_link_libraries(lab11_all_tests libmemoryleak)
+target_link_libraries(lab11_all_tests memleak)
