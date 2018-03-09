@@ -15,7 +15,7 @@ install:
 script:
   - echo `which $CXX`
   - mkdir build && cd build;
-    cmake -DCMAKE_CXX_COMPILER=$CXX
+    cmake -DCMAKE_CXX_COMPILER=$CXX ..
   - make lab1_double_base_palindrome_tests
   - make lab1_all_tests
 
