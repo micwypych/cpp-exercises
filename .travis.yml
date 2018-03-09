@@ -17,8 +17,27 @@ script:
   - mkdir build && cd build;
     cmake -DCMAKE_CXX_COMPILER=$CXX ..
   - make lab1_double_base_palindrome_tests
-  - make lab1_all_tests
-
-
+  - tests/lab1test/lab1_double_base_palindrome_tests
+  - make lab2_array_2d_step1_tests
+  - tests/lab2test/lab2_array_2d_step1_tests
+  - make lab2_array_2d_step2_tests
+  - tests/lab2test/lab2_array_2d_step2_tests
+  - make lab2_array_2d_step3_tests
+  - tests/lab2test/lab2_array_2d_step3_tests
+  - make lab2_array_2d_step4_tests
+  - tests/lab2test/lab2_array_2d_step4_tests
+  - make lab2_simple_forward_list_step1_tests
+  - tests/lab2test/lab2_simple_forward_list_step1_tests
+  - make lab2_simple_forward_list_step1_tests
+  - tests/lab2test/lab2_simple_forward_list_step2_tests
+  - make lab2_simple_forward_list_step3_tests
+  - tests/lab2test/lab2_simple_forward_list_step3_tests
+  - make lab2_polybius_step1_tests
+  - tests/lab2test/lab2_polybius_step1_tests
+  - make lab2_polybius_step2_tests
+  - tests/lab2test/lab2_polybius_step2_tests
+  - make lab2_xor_cypher_breaker_tests
+  - tests/lab2test/lab2_xor_cypher_breaker_tests
+  
 notifications:
   email: false
