@@ -17,15 +17,15 @@ install:
 before_build:
   # Workaround for CMake not wanting sh.exe on PATH for MinGW
   - ECHO %PATH%
-  - set PATH=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1;%PATH%
+  - set PATH=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin;%PATH%
   - DIR C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1
-  - DIR C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64
+  - DIR C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
   - DIR C:\mingw\bin
   - mingw-w64.bat
   
   - mkdir build
   - cd build
-  - cmake -G "%GENERATOR%" ..
+  - cmake -G "%GENERATOR%" -DCMAKE_CXX_COMPILER="C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin\g++" .. 
 
 build_script:
   - mingw32-make lab1_double_base_palindrome_tests
