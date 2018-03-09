@@ -17,7 +17,9 @@ install:
 before_build:
   # Workaround for CMake not wanting sh.exe on PATH for MinGW
   - ECHO %PATH%
-  - set PATH=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1
+  - set PATH=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1;%PATH%
+  - ECHO %PATH%
+  - DIR C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1
   - mkdir build
   - cd build
   - cmake -G "%GENERATOR%" ..
