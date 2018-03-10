@@ -28,5 +28,7 @@ before_build:
 
 build_script:
   - mingw32-make example_examplelibrary_tests
+  - dir tests
+  - dir tests\exampletests
   - tests\exampletests\example_examplelibrary_tests.exe
 
