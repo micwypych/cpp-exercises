@@ -27,5 +27,6 @@ before_build:
   - cmake -G "%GENERATOR%" .. 
 
 build_script:
-  - mingw32-make lab1_double_base_palindrome_tests
-  - tests/lab1test/lab1_double_base_palindrome_tests 
+  - mingw32-make example_examplelibrary_tests
+  - tests/exampletests/example_examplelibrary_tests.exe
+
