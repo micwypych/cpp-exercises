@@ -29,6 +29,6 @@ before_build:
 build_script:
   - mingw32-make example_examplelibrary_tests
   - dir tests
-  - dir C:\projects\cpp-exercises\build\tests\exampletest
+  - dir tests\exampletest
   - tests\exampletest\example_examplelibrary_tests.exe
 
