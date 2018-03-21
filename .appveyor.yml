@@ -16,7 +16,7 @@ install:
 
 before_build:
   # Workaround for CMake not wanting sh.exe on PATH for MinGW
-  - set PATH=%PATH:C:\Program Files (x86)\Git\usr\bin;=%
+  - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
   - ECHO %PATH%
   - set PATH=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin;%PATH%
   - DIR C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1
@@ -24,8 +24,11 @@ before_build:
   - DIR C:\mingw\bin  
   - mkdir build
   - cd build
-  - cmake -G "%GENERATOR%" -DCMAKE_CXX_COMPILER="C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin\g++" .. 
+  - cmake -G "%GENERATOR%" .. 
 
 build_script:
-  - mingw32-make lab1_double_base_palindrome_tests
-  - tests/lab1test/lab1_double_base_palindrome_tests 
+  - mingw32-make example_examplelibrary_tests
+  - dir tests
+  - dir tests\exampletest
+  - tests\exampletest\example_examplelibrary_tests.exe
+
