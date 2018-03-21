@@ -65,8 +65,8 @@ TEST(NameTests, test_IsBeforeByName) {
   Name aaa {"A B C AAA"};
   Name zzz {"X Y Z ZZZ"};
 
-  EXPECT_TRUE(aaa.IsBeforeBySurname(zzz));
-  EXPECT_FALSE(zzz.IsBeforeBySurname(aaa));
+  EXPECT_TRUE(aaa.IsBeforeByFirstName(zzz));
+  EXPECT_FALSE(zzz.IsBeforeByFirstName(aaa));
 }
 
 std::vector<TestParam> nameTestData{
