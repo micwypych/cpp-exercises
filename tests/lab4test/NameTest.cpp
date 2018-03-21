@@ -53,6 +53,22 @@ TEST_P(NameTests, ProperSquares) {
   EXPECT_EQ(expected["names surname"], name_under_test.ToNamesSurname());
 }
 
+TEST(NameTests, test_IsBeforeBySurname) {
+  Name aaa {"A B C AAA"};
+  Name zzz {"X Y Z ZZZ"};
+
+  EXPECT_TRUE(aaa.IsBeforeBySurname(zzz));
+  EXPECT_FALSE(zzz.IsBeforeBySurname(aaa));
+}
+
+TEST(NameTests, test_IsBeforeByName) {
+  Name aaa {"A B C AAA"};
+  Name zzz {"X Y Z ZZZ"};
+
+  EXPECT_TRUE(aaa.IsBeforeBySurname(zzz));
+  EXPECT_FALSE(zzz.IsBeforeBySurname(aaa));
+}
+
 std::vector<TestParam> nameTestData{
     {"John Ronald Reuel Tolkien",
         {{"1st name","John"},
@@ -63,7 +79,7 @@ std::vector<TestParam> nameTestData{
          {"first names initials", "J. R. R. Tolkien"},
          {"surname names", "Tolkien John Ronald Reuel"},
          {"names surname", "John Ronald Reuel Tolkien"}}},
-    {"Thomas\tJorge   Jelly\t\n\r \tCucumber",
+    {"Thomas\tJorge   Djelly\t\n\r \tCucumber",
      {{"1st name","Thomas"},
       {"2nd name","Jorge"},
       {"3rd name", "Djelly"},
@@ -79,6 +95,14 @@ std::vector<TestParam> nameTestData{
       {"first names initials", "J. Surname"},
       {"surname names", "Surname Just"},
       {"names surname", "Just Surname"}}},
+    {"First\t\tAndSecond\n\r \tSurname",
+     {{"1st name","First"},
+      {"2nd name","AndSecond"},
+      {"last name", "Surname"},
+      {"full name initials", "F. A. S."},
+      {"first names initials", "F. A. Surname"},
+      {"surname names", "Surname First AndSecond"},
+      {"names surname", "First AndSecond Surname"}}},
     {"First\t\tAndSecond\n\r \tSurname-With-Dash",
      {{"1st name","First"},
       {"2nd name","AndSecond"},
