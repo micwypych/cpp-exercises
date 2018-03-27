@@ -12,6 +12,8 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install gcc-snapshot -y
   - sudo apt-get install gcc-6 g++-6 -y 
+  - sudo apt-get install cppcheck
+  - sudo apt-get install valgrind
   - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-6
 
 install:
@@ -24,49 +26,57 @@ script:
   - mkdir build && cd build;
     cmake -DCMAKE_CXX_COMPILER=$CXX ..
   - make example_examplelibrary_tests
-  - tests/exampletest/example_examplelibrary_tests
   - make lab1_double_base_palindrome_tests
-  - tests/lab1test/lab1_double_base_palindrome_tests
   - make lab2_array_2d_step1_tests
-  - tests/lab2test/lab2_array_2d_step1_tests
   - make lab2_array_2d_step2_tests
-  - tests/lab2test/lab2_array_2d_step2_tests
   - make lab2_array_2d_step3_tests
-  - tests/lab2test/lab2_array_2d_step3_tests
   - make lab2_array_2d_step4_tests
-  - tests/lab2test/lab2_array_2d_step4_tests
   - make lab2_simple_forward_list_step1_tests
-  - tests/lab2test/lab2_simple_forward_list_step1_tests
   - make lab2_simple_forward_list_step2_tests
-  - tests/lab2test/lab2_simple_forward_list_step2_tests
   - make lab2_simple_forward_list_step3_tests
-  - tests/lab2test/lab2_simple_forward_list_step3_tests
   - make lab2_polybius_step1_tests
-  - tests/lab2test/lab2_polybius_step1_tests
   - make lab2_polybius_step2_tests
-  - tests/lab2test/lab2_polybius_step2_tests
   - make lab2_xor_cypher_breaker_tests
-  - tests/lab2test/lab2_xor_cypher_breaker_tests
   - make lab3_smart_tree_step1_tests
-  - tests/lab3test/lab3_smart_tree_step1_tests
   - make lab3_smart_tree_step2_tests
-  - tests/lab3test/lab3_smart_tree_step2_tests
   - make lab3_smart_tree_step3_tests
-  - tests/lab3test/lab3_smart_tree_step3_tests
   - make lab3_smart_tree_step4_tests
-  - tests/lab3test/lab3_smart_tree_step4_tests
   - make lab3_smart_tree_step5_tests
-  - tests/lab3test/lab3_smart_tree_step5_tests
   - make lab3_tiny_url_step1_tests
-  - tests/lab3test/lab3_tiny_url_step1_tests
   - make lab3_tiny_url_step2_tests
-  - tests/lab3test/lab3_tiny_url_step2_tests
   - make lab4_simple_template_engine_tests
-  - tests/lab4test/lab4_simple_template_engine_tests
   - make lab4_simple_template_engine_injection_tests
-  - tests/lab4test/lab4_simple_template_engine_injection_tests
   - make lab4_simple_json_tests
-  - tests/lab4test/lab4_simple_json_tests
+  - make lab5_matrix_tests
+  - make lab5_text_pool_tests
+  - make lab6_word_counter_tests
+  - make lab7_point3d_distance_tests
+  - make lab7_point2d_distance_3d_tests
+  - make lab7_point3d_cout_tests
+  - make lab7_shapes_tests
+  - make lab8_micro_dvd_correct_cases_tests
+  - make lab8_micro_dvd_error_cases_tests
+  - make lab8_movie_subtitles_tests
+  - make lab8_sub_rip_correct_cases_tests
+  - make lab8_sub_rip_error_cases_tests
+  - make lab9_base_serializer_tests
+  - make lab9_json_serializer_tests
+  - make lab9_xml_serializer_tests
+  - make lab10_schedule_tests
+  - make lab10_scheduler_tests
+  - make lab12_sequential_generator_tests
+  - make lab12_teacher_hash_tests
+  - make lab12_time_recorder_tests
+  - make lab12_tree_preorder_tests
+  - make lab12_tree_inorder_tests
+  - make lab12_tree_postorder_tests
+  - cd .. && echo RUNNING ALL COMPILED TESTS
+  - find build/tests/ -type f -name '*tests' -exec {} \;
+  - echo RUNNING CPPCHECK STATIC ANALYSIS
+  - cppcheck --xml --xml-version=2 --enable=all example lab* 2> build/cppcheck-report.xml && cat build/cppcheck-report.xml
+  - echo RUNNING VALGRIND MEMCHECK (it can take a while)
+  - find build/tests/ -type f -name '*tests' -exec valgrind {} \;
+
 
 notifications:
   email: false
