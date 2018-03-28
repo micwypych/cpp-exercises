@@ -75,7 +75,7 @@ script:
   - echo RUNNING CPPCHECK STATIC ANALYSIS
   - cppcheck --xml --xml-version=2 --enable=all example lab* 2> build/cppcheck-report.xml && cat build/cppcheck-report.xml
   - echo RUNNING VALGRIND MEMCHECK (it can take a while)
-  - find build/tests/ -type f -name '*tests' -exec valgrind {} \;
+  - find build/tests/ -type f -name '*tests' -exec valgrind --leak-check=full --show-mismatched-frees=yes --track-origins=yes {} \;
 
 
 notifications:
