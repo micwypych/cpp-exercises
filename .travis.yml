@@ -75,7 +75,7 @@ script:
   - echo 'RUNNING CPPCHECK STATIC ANALYSIS'
   - find -L example lab* -mindepth 1 -maxdepth 1 -type d | xargs cppcheck --check-config --xml --xml-version=2 --suppress=missingIncludeSystem --enable=all 2> build/cppcheck-report.xml
   - echo 'RUNNING VALGRIND MEMCHECK (it can take a while)'
-  - find build/tests/ -type f -name '*tests' -exec valgrind --leak-check=full --show-mismatched-frees=yes --track-origins=yes {} \;
+  - find build/tests/ -type f -name '*tests' ! -regex '.*\(xor_cypher_breaker\|double_base_palindrome\)_tests' -exec valgrind --leak-check=full --show-mismatched-frees=yes --track-origins=yes {} \;
 
 
 notifications:
