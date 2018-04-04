@@ -70,11 +70,11 @@ script:
   - make lab12_tree_preorder_tests
   - make lab12_tree_inorder_tests
   - make lab12_tree_postorder_tests
-  - cd .. && echo RUNNING ALL COMPILED TESTS
+  - cd .. && echo 'RUNNING ALL COMPILED TESTS'
   - find build/tests/ -type f -name '*tests' -exec {} \;
-  - echo RUNNING CPPCHECK STATIC ANALYSIS
-  - cppcheck --xml --xml-version=2 --enable=all example lab* 2> build/cppcheck-report.xml && cat build/cppcheck-report.xml
-  - echo RUNNING VALGRIND MEMCHECK (it can take a while)
+  - echo 'RUNNING CPPCHECK STATIC ANALYSIS'
+  - find -L example lab* -mindepth 1 -maxdepth 1 -type d | xargs cppcheck --check-config --xml --xml-version=2 --suppress=missingIncludeSystem --enable=all 2> build/cppcheck-report.xml
+  - echo 'RUNNING VALGRIND MEMCHECK (it can take a while)'
   - find build/tests/ -type f -name '*tests' -exec valgrind --leak-check=full --show-mismatched-frees=yes --track-origins=yes {} \;
 
 
