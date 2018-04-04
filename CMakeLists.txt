@@ -3,6 +3,10 @@ project(jimp_exercises)
 
 set(CMAKE_CXX_STANDARD 14)
 
+if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+endif()
+
 macro(add_subdirectory_if_exists DIR)
     #    message("add_subdirectory_if_exists")
     string(TOUPPER "${DIR}" DIR_UPPER)
