@@ -19,5 +19,5 @@ add_executable(lab9_all_tests ${SOURCE_FILES})
 
 target_link_libraries(lab9_all_tests ${GTEST_LIBS})
 target_link_libraries(lab9_all_tests libserialization)
-target_link_libraries(lab9_all_tests memleak)
 target_link_libraries(lab9_all_tests stringutility)
+memleak_target(lab9_all_tests memleak)

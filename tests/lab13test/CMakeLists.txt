@@ -16,4 +16,4 @@ add_executable(lab13_all_tests ${SOURCE_FILES})
 
 target_link_libraries(lab13_all_tests ${GTEST_LIBS})
 target_link_libraries(lab13_all_tests libarabicroman)
-target_link_libraries(lab13_all_tests libmemoryleak)
+memleak_target(lab13_all_tests)

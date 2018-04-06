@@ -57,7 +57,8 @@ endmacro(add_gtest)
 
 macro(add_gtest_with_memleak TEST_NAME_TARGET SOLUTION_LIB_DEP)
     add_gtest("${TEST_NAME_TARGET}" "${SOLUTION_LIB_DEP}")
-    target_link_libraries("${TEST_TARGET_INTERNAL}" memleak)
+    memleak_target("${TEST_TARGET_INTERNAL}")
+
 endmacro(add_gtest_with_memleak)
 
 macro(add_gtest_with_memleak_stepped TEST_NAME_TARGET)
@@ -68,6 +69,12 @@ macro(add_gtest_with_memleak_stepped TEST_NAME_TARGET)
         add_gtest_with_memleak("${TEST_NAME_TARGET_STEPPED}" "${SOLUTION_LIB_DEP}")
     endforeach ()
 endmacro(add_gtest_with_memleak_stepped)
+
+macro(memleak_target TARGET_NAME)
+    if (NOT APPLE)
+        target_link_libraries("${TARGET_NAME}" memleak)
+    endif()
+endmacro(add_memleak)
 
 add_subdirectory(lab1test)
 add_subdirectory(lab2test)
