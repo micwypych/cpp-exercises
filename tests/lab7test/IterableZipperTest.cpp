@@ -18,9 +18,35 @@ class IterableZipperTests : public ::testing::Test, MemLeakTest {
  public:
 };
 
+TEST_F(IterableZipperTests, ZipperHasCBeginCEndMethods) {
+  const vector<int> vi {8, 12, 103};
+  const vector<string> vs {"kolo", "zadanie", "egzamin"};
+
+  int i = 0;
+  const auto zipped = Zipper(vi,vs);
+  for (auto p = zipped.cbegin(); p!=zipped.cend(); ++p) {
+    EXPECT_EQ(vi[i], (*p).first);
+    EXPECT_EQ(vs[i], (*p).second);
+    i++;
+  }
+}
+
+TEST_F(IterableZipperTests, ZipperHasBeginEndMethods) {
+  const vector<int> vi {1, 3, 10, -911, -901, 551117272};
+  const vector<string> vs {"strumien", "siadmosci", "typowy", "dla", "duzego", "zmeczenia"};
+
+  int i = 0;
+  const auto zipped = Zipper(vi,vs);
+  for (auto p = zipped.begin(); p!=zipped.end(); ++p) {
+    EXPECT_EQ(vi[i], (*p).first);
+    EXPECT_EQ(vs[i], (*p).second);
+    i++;
+  }
+}
+
 TEST_F(IterableZipperTests, ZipEqualLenghtLists) {
-  vector<int> vi {4, 77, -91};
-  vector<string> vs {"4", "9991", "adfskld"};
+  const vector<int> vi {4, 77, -91};
+  const vector<string> vs {"4", "9991", "adfskld"};
 
   int i = 0;
   for (const auto &p : Zipper(vi, vs)) {
@@ -31,9 +57,9 @@ TEST_F(IterableZipperTests, ZipEqualLenghtLists) {
 }
 
 TEST_F(IterableZipperTests, ZipWithLeftListLonger) {
-  vector<int> vi {4, 77, -91, 100, 2000};
-  vector<string> vs {"4", "9991", "adfskld"};
-  vector<string> vs_expected {"4", "9991", "adfskld", "adfskld", "adfskld"};
+  const vector<int> vi {4, 77, -91, 100, 2000};
+  const vector<string> vs {"4", "9991", "adfskld"};
+  const vector<string> vs_expected {"4", "9991", "adfskld", "adfskld", "adfskld"};
 
   int i = 0;
   for (const auto &p : Zipper(vi, vs)) {
@@ -44,9 +70,9 @@ TEST_F(IterableZipperTests, ZipWithLeftListLonger) {
 }
 
 TEST_F(IterableZipperTests, ZipWithRightListLonger) {
-  vector<int> vi {4};
-  vector<string> vs {"4", "9991", "adfskld"};
-  vector<int> vi_expected {4, 4, 4};
+  const vector<int> vi {4};
+  const vector<string> vs {"4", "9991", "adfskld"};
+  const vector<int> vi_expected {4, 4, 4};
 
   int i = 0;
   for (const auto &p : Zipper(vi, vs)) {
@@ -57,8 +83,8 @@ TEST_F(IterableZipperTests, ZipWithRightListLonger) {
 }
 
 TEST_F(IterableZipperTests, ZipEmptyLists) {
-  vector<int> vi {};
-  vector<string> vs {};
+  const vector<int> vi {};
+  const vector<string> vs {};
 
   int i = 0;
   for (const auto &p : Zipper(vi, vs)) {

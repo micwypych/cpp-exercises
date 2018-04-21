@@ -20,8 +20,8 @@ public:
 };
 
 TEST_F(IterableProductTests, ProductOfIntAndStringList) {
-    vector<int> vi {7, -3};
-    vector<string> vs {"4", "9991", "adfskld"};
+    const vector<int> vi {7, -3};
+    const vector<string> vs {"4", "9991", "adfskld"};
     vector<pair<int,string>> expected {{7, "4"}, {7, "9991"}, {7, "adfskld"},{-3, "4"}, {-3, "9991"}, {-3, "adfskld"}};
 
     int i = 0;
@@ -30,5 +30,18 @@ TEST_F(IterableProductTests, ProductOfIntAndStringList) {
         i++;
     }
     EXPECT_EQ(expected.size(), i);
+}
+
+TEST_F(IterableProductTests, ProductOfEmptyList) {
+    const vector<int> vi {};
+    const vector<string> vs {};
+    const vector<pair<int,string>> expected {};
+
+    int i = 0;
+    for (const auto &p : Product(vi, vs)) {
+        EXPECT_EQ(expected[i].first, p.first);
+        EXPECT_EQ(expected[i].second, p.second);
+        i++;
+    }
 }
 
